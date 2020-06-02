@@ -8,7 +8,7 @@ namespace SpyAgency2019
 {
     public partial class Form1 : Form
     {
-        Spy DefaultSpy = new Double03();
+        Spy DefaultSpy = new Spy();
 
 
         public Form1()
@@ -30,9 +30,9 @@ namespace SpyAgency2019
 
             lbxSpy.Items.Clear();
             //add the code name and others from the form
-            //  DefaultSpy.CodeName = txtCodeName.Text;
-            //  DefaultSpy.Agency.Country = txtAgencyCountry.Text;
-            //  DefaultSpy.Agency.AgencyName = txtAgencyName.Text;
+            DefaultSpy.CodeName = txtCodeName.Text;
+            DefaultSpy.Agency.Country = txtAgencyCountry.Text;
+            DefaultSpy.Agency.AgencyName = txtAgencyName.Text;
 
 
             // if the string is null then put a 0 otherwise put the number
@@ -67,16 +67,16 @@ namespace SpyAgency2019
 
         private void Cbspylevel_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //  ChooseSpyLevel();
+            ChooseSpyLevel();
 
         }
 
         public void ChooseSpyLevel()
         {
             //select a level of spy and instantiate it
-            //  var MyChosenSpy = Factory.GetASpy(cbspylevel.SelectedIndex);
+            var MyChosenSpy = Factory.GetASpy(cbspylevel.SelectedIndex);
             //pass across the values to the default spy
-            //   DefaultSpy = MyChosenSpy;
+            DefaultSpy = MyChosenSpy;
 
             //empty the Listbox
             lbxSpy.Items.Clear();
