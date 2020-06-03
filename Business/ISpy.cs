@@ -15,5 +15,6 @@ namespace SpyAgency2019.Business
         double DaysSinceLastSeen(DateTime contactDate);
         string Home();
         double YearsOld(DateTime born);
+
     }
 }
