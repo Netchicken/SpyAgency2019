@@ -54,6 +54,7 @@
     <Compile Include="Business\Double06.cs" />
     <Compile Include="Business\Double07.cs" />
     <Compile Include="Business\Factory.cs" />
+    <Compile Include="Business\ISpy.cs" />
     <Compile Include="Business\Spy.cs" />
     <Compile Include="Data\FileOperations.cs" />
     <Compile Include="Form1.cs">
