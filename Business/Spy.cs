@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SpyAgency2019.Business
+namespace SpyAgency.Business
 {
     public class Spy : ISpy
     {
@@ -11,7 +11,7 @@ namespace SpyAgency2019.Business
         public string KillAbility { get; set; }
         public string Gadgets { get; set; }
         public int Charmlevel { get; set; }
-        //  public string chocolateType { get; set; }
+
 
         //Constructor with our single spy's abilities
         public Spy()
@@ -25,17 +25,7 @@ namespace SpyAgency2019.Business
         }
 
 
-        public void chocolateType(DateTime born)
-        {
 
-            TimeSpan ts = DateTime.Now - born;
-            double age = ts.TotalDays / 365;
-            age = Math.Round(age, 1);
-
-
-
-
-        }
         //Methods
 
         //how old is the Spy

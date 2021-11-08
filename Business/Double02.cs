@@ -1,4 +1,4 @@
-﻿namespace SpyAgency2019.Business
+﻿namespace SpyAgency.Business
 {
     class Double02 : Spy
     {

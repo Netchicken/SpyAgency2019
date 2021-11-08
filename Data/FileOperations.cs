@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SpyAgency2019.Data
+namespace SpyAgency.Data
 {
     static class FileOperations
     {
@@ -45,14 +42,25 @@ namespace SpyAgency2019.Data
         /// <returns>List of file details</returns>
         public static List<string> ReturnFileData(string ChosenFileName)
         {
-            string filename = Application.StartupPath + @"\" + ChosenFileName;
-            List<string> Details = new List<string>();
-
-            foreach (string line in File.ReadLines(filename))
+            try
             {
-                Details.Add(line);
+                string filename = Application.StartupPath + @"\" + ChosenFileName;
+                List<string> Details = new List<string>();
+
+                foreach (string line in File.ReadLines(filename))
+                {
+                    Details.Add(line);
+                }
+                return Details;
             }
-            return Details;
+            catch (Exception)
+            {
+
+                return null;
+            }
+
+
+
         }
 
         //save the file

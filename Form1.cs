@@ -1,10 +1,11 @@
-﻿using SpyAgency2019.Business;
-using SpyAgency2019.Data;
+﻿using SpyAgency.Business;
+using SpyAgency.Data;
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace SpyAgency2019
+namespace SpyAgency
 {
     public partial class Form1 : Form
     {
@@ -14,31 +15,45 @@ namespace SpyAgency2019
         public Form1()
         {
             InitializeComponent();
-            LoadSpy();
+            LoadSpyData();
 
             cbspylevel.SelectedIndex = 0; //Set the first option in the combobox
         }
-        private void BtnSpyDetails_Click(object sender, EventArgs e)
-        {
-            LoadSpy();
-            //lets you save your spy after you made it by making visible the button
-            btnSaveSpy.Visible = true;
-        }
 
-        private void LoadSpy()
-        {
 
-            lbxSpy.Items.Clear();
+        //pass the text data to the Default Spy Class
+        private void LoadSpyData()
+        {
             //add the code name and others from the form
             DefaultSpy.CodeName = txtCodeName.Text;
+
+            DefaultSpy.Weapon = txtWeapon.Text;
+            DefaultSpy.KillAbility = txtKillability.Text;
+            DefaultSpy.Gadgets = txtGadgets.Text;
+            DefaultSpy.Charmlevel = (int)numCharmLevel.Value;
+
             DefaultSpy.Agency.Country = txtAgencyCountry.Text;
             DefaultSpy.Agency.AgencyName = txtAgencyName.Text;
-
-
-            // if the string is null then put a 0 otherwise put the number
-            DefaultSpy.Agency.NumberOfAgents = string.IsNullOrEmpty(txtNumberOfAgents.Text) ? 0 : Convert.ToInt32(txtNumberOfAgents.Text);
+            DefaultSpy.Agency.NumberOfAgents = (int)numAgents.Value;
 
             FillListBox();
+        }
+
+        //takes all the data in the DefaultSpy class and writes it to the listbox
+        private void FillListBox()
+        {
+            lbxSpy.Items.Clear();
+            lbxSpy.Items.Add("Code name: " + DefaultSpy.CodeName);
+            lbxSpy.Items.Add("Agent weapon is a " + DefaultSpy.Weapon);
+            lbxSpy.Items.Add("Agent killability is " + DefaultSpy.KillAbility);
+            lbxSpy.Items.Add("Agent can use a " + DefaultSpy.Gadgets);
+            lbxSpy.Items.Add("Agent charm level is " + DefaultSpy.Charmlevel);
+
+            lbxSpy.Items.Add("Home: " + DefaultSpy.Home());
+            lbxSpy.Items.Add("Lives in " + DefaultSpy.Agency.Country);
+            lbxSpy.Items.Add("Agency Name: " + DefaultSpy.Agency.AgencyName);
+
+
 
             //work out the age
             lbxSpy.Items.Add("Spy is " + DefaultSpy.YearsOld(dtpDOB.Value) + " years old");
@@ -46,23 +61,15 @@ namespace SpyAgency2019
             //work out how long since seen
             lbxSpy.Items.Add(DefaultSpy.DaysSinceLastSeen(dtpLastSeen.Value) + " days last seen");
             //How many agents in the spy group
-            lbxSpy.Items.Add("There are " + DefaultSpy.Agency.NumberOfAgents + " spies");
+            lbxSpy.Items.Add("There are " + DefaultSpy.Agency.NumberOfAgents + " agents");
 
-        }
 
-        private void FillListBox()
-        {
-            lbxSpy.Items.Clear();
-            lbxSpy.Items.Add("Code name: " + DefaultSpy.CodeName);
-            lbxSpy.Items.Add("Agent can use a " + DefaultSpy.KillAbility);
-            lbxSpy.Items.Add("Agent weapon is a " + DefaultSpy.Weapon);
-            lbxSpy.Items.Add("Home: " + DefaultSpy.Home());
-            lbxSpy.Items.Add("Lives in " + DefaultSpy.Agency.Country);
+
         }
 
         private void DtpDOB_ValueChanged(object sender, EventArgs e)
         {
-            LoadSpy();
+            LoadSpyData();
         }
 
         private void Cbspylevel_SelectedIndexChanged(object sender, EventArgs e)
@@ -74,12 +81,22 @@ namespace SpyAgency2019
         public void ChooseSpyLevel()
         {
             //select a level of spy and instantiate it
-            var MyChosenSpy = Factory.GetASpy(cbspylevel.SelectedIndex);
+            var myChosenSpy = Factory.GetASpy(cbspylevel.SelectedIndex);
             //pass across the values to the default spy
-            DefaultSpy = MyChosenSpy;
+            DefaultSpy = myChosenSpy;
 
-            //empty the Listbox
-            lbxSpy.Items.Clear();
+            //if there is a new name use that instead of the default name
+            if (!string.IsNullOrEmpty(txtCodeName.Text))
+            {
+                DefaultSpy.CodeName = txtCodeName.Text;
+            }
+
+            //pass the values to the Change Default Features section
+            txtWeapon.Text = DefaultSpy.Weapon;
+            txtKillability.Text = DefaultSpy.KillAbility;
+            txtGadgets.Text = DefaultSpy.Gadgets;
+            numCharmLevel.Value = DefaultSpy.Charmlevel;
+
             //see it on the listbox with default settings
             FillListBox();
         }
@@ -100,10 +117,9 @@ namespace SpyAgency2019
             //print out if there is a codename as it will be used as the filename
             if (DefaultSpy.CodeName != null)
             {
-                //  DefaultSpy.CodeName = txtCodeName.Text;
+
                 string filename = DefaultSpy.CodeName;
                 Data.FileOperations.SaveFile(filename, FileData);
-                btnSaveSpy.Visible = false;
                 MessageBox.Show("File named " + filename + ".txt" + " has been saved");
             }
             else
@@ -116,26 +132,37 @@ namespace SpyAgency2019
 
         private void btnLoadFiles_Click(object sender, EventArgs e)
         {
-            lbxSpy.Items.Clear();
-            lbxSpy.Items.AddRange(FileOperations.ListAllFiles().ToArray());
+            lbxFiles.Items.Clear();
+            lbxFiles.Items.AddRange(FileOperations.ListAllFiles().ToArray());
         }
-        //load file based on selected file name
-        private void lbspy_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void lbxFiles_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {//get the name you click on
-                string ChosenFileName = Convert.ToString(lbxSpy.SelectedItem);
+                string ChosenFileName = Convert.ToString(lbxFiles.SelectedItem);
                 lbxSpy.Items.Clear();
                 //load the file with that name
                 lbxSpy.Items.AddRange(FileOperations.ReturnFileData(ChosenFileName).ToArray());
             }
             catch (Exception exception)
             {
-                lbxSpy.Items.Add("Error Occured");
-                MessageBox.Show(exception.ToString());
+                //lbxSpy.Items.Add("Error Occured");
+                //MessageBox.Show(exception.ToString());
             }
         }
 
+
+
+        private void AlltxtBoxChanges_TextChanged(object sender, EventArgs e)
+        {
+            LoadSpyData();
+        }
+
+        private void Allnum_ValueChanged(object sender, EventArgs e)
+        {
+            LoadSpyData();
+        }
 
 
     }

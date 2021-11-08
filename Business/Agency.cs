@@ -1,4 +1,4 @@
-﻿namespace SpyAgency2019.Business
+﻿namespace SpyAgency.Business
 {
     public class Agency
     {
@@ -12,16 +12,10 @@
         {
             Country = "UK";
             AgencyName = "MI6";
-            NumberOfAgents = 12;
+            NumberOfAgents = 0;
 
         }
 
-        //Methods
-        public string CountryAgencyName()
-        {
-            string alldetails = Country + " " + AgencyName;
-            return alldetails;
-        }
 
     }
 }

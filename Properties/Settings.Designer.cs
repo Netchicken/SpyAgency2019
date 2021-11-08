@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SpyAgency2019.Properties
+namespace SpyAgency.Properties
 {
 
 

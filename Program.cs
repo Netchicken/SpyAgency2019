@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SpyAgency2019
+namespace SpyAgency
 {
     static class Program
     {
