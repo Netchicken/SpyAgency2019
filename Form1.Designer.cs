@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.numCharmLevel = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
@@ -58,6 +57,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.lbxFiles = new System.Windows.Forms.ListBox();
             this.btnDeleteFile = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCharmLevel)).BeginInit();
@@ -77,25 +77,12 @@
             this.pictureBox1.TabIndex = 31;
             this.pictureBox1.TabStop = false;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Green;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(8, 69);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(109, 13);
-            this.label8.TabIndex = 25;
-            this.label8.Text = "Choose Spy Level";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.numCharmLevel);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label13);
@@ -106,7 +93,6 @@
             this.panel2.Controls.Add(this.txtWeapon);
             this.panel2.Controls.Add(this.dtpDOB);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.dtpLastSeen);
             this.panel2.Controls.Add(this.cbspylevel);
             this.panel2.Location = new System.Drawing.Point(25, 17);
@@ -188,7 +174,7 @@
             this.txtWeapon.Location = new System.Drawing.Point(6, 128);
             this.txtWeapon.Margin = new System.Windows.Forms.Padding(2);
             this.txtWeapon.Name = "txtWeapon";
-            this.txtWeapon.Size = new System.Drawing.Size(159, 20);
+            this.txtWeapon.Size = new System.Drawing.Size(138, 20);
             this.txtWeapon.TabIndex = 9;
             this.txtWeapon.Leave += new System.EventHandler(this.AlltxtBoxChanges_TextChanged);
             // 
@@ -410,6 +396,15 @@
             this.btnDeleteFile.UseVisualStyleBackColor = true;
             this.btnDeleteFile.Click += new System.EventHandler(this.btnDeleteFile_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 69);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(50, 13);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "Spy level";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -441,7 +436,6 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtCodeName;
@@ -470,6 +464,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ListBox lbxFiles;
         private System.Windows.Forms.Button btnDeleteFile;
+        private System.Windows.Forms.Label label8;
     }
 }
 
