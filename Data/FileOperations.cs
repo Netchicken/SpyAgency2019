@@ -15,25 +15,32 @@ namespace SpyAgency.Data
         /// <returns>list of files</returns>
         public static List<string> ListAllFiles()
         {
-            String Path = Application.StartupPath + @"\";
-            List<string> Details = new List<string>();
+            List<string> details = new List<string>();
             try
             {
+                String Path = Application.StartupPath + @"\";
                 // loop through the directory and get all the file names with a .txt suffix
                 foreach (String file in Directory.GetFiles(Path))
                 {
                     FileInfo info = new FileInfo(file);
                     if (info.Extension == ".txt")
                     {
-                        Details.Add(info.Name);
+                        details.Add(info.Name);
                     }
                 }
-                return Details;
+
+                if (details.Count == 0)
+                {
+                    details.Add("No Spies");
+
+                }
+
+                return details;
             }
             catch (Exception)
-            {//don't allow nulls
-                Details.Add("No Spies");
-                return Details;
+            {
+                details.Add("No Spies");
+                return details;
             }
         }
         /// <summary>
@@ -42,21 +49,20 @@ namespace SpyAgency.Data
         /// <returns>List of file details</returns>
         public static List<string> ReturnFileData(string ChosenFileName)
         {
+            List<string> details = new List<string>();
             try
             {
                 string filename = Application.StartupPath + @"\" + ChosenFileName;
-                List<string> Details = new List<string>();
-
                 foreach (string line in File.ReadLines(filename))
                 {
-                    Details.Add(line);
+                    details.Add(line);
                 }
-                return Details;
+                return details;
             }
             catch (Exception)
             {
-
-                return null;
+                details.Add("No Spies");
+                return details;
             }
 
 
@@ -69,7 +75,10 @@ namespace SpyAgency.Data
             File.WriteAllLines(Application.StartupPath + @"\" + filename + ".txt", FileData);
         }
 
-
+        public static void DeleteFile(string filename)
+        {
+            File.Delete(Application.StartupPath + @"\" + filename);
+        }
 
 
 

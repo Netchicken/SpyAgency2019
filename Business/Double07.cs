@@ -7,19 +7,16 @@ namespace SpyAgency.Business
         public Double07()
         {
             Weapon = "Thermo Nuclear Device";
-            KillAbility = "Absolute Devastation";
-            Gadgets = "invisibilty and invulnerability Protection";
             Charmlevel = 7;
             CodeName = "Bond James Bond";
 
         }
 
-        //How long since we last saw the spy
+
+        //we never record when we last saw 007 therefore its always 0
+        //override the default method in Spy
         public override double DaysSinceLastSeen(DateTime contactDate)
         {
-            //TimeSpan ts = DateTime.Now - contactDate;
-            //double LastSeen = ts.TotalDays;
-            //LastSeen = Math.Round(LastSeen, 1);
             return 0;
 
         }

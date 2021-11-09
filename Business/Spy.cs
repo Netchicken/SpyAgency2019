@@ -8,8 +8,6 @@ namespace SpyAgency.Business
         public Agency Agency { get; set; } //Aggregation
         public string DateLastSeen { get; set; }
         public string Weapon { get; set; }
-        public string KillAbility { get; set; }
-        public string Gadgets { get; set; }
         public int Charmlevel { get; set; }
 
 
@@ -18,8 +16,6 @@ namespace SpyAgency.Business
         {
             Agency = new Agency();
             Weapon = "Rubberband";
-            KillAbility = "Slap";
-            Gadgets = "Pen";
             Charmlevel = 1;
             CodeName = "Rogue Killer";
         }

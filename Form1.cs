@@ -9,7 +9,7 @@ namespace SpyAgency
 {
     public partial class Form1 : Form
     {
-        Spy DefaultSpy = new Spy();
+        Spy defaultSpy = new Spy();
 
 
         public Form1()
@@ -25,16 +25,13 @@ namespace SpyAgency
         private void LoadSpyData()
         {
             //add the code name and others from the form
-            DefaultSpy.CodeName = txtCodeName.Text;
+            defaultSpy.CodeName = txtCodeName.Text;
+            defaultSpy.Weapon = txtWeapon.Text;
+            defaultSpy.Charmlevel = (int)numCharmLevel.Value;
 
-            DefaultSpy.Weapon = txtWeapon.Text;
-            DefaultSpy.KillAbility = txtKillability.Text;
-            DefaultSpy.Gadgets = txtGadgets.Text;
-            DefaultSpy.Charmlevel = (int)numCharmLevel.Value;
-
-            DefaultSpy.Agency.Country = txtAgencyCountry.Text;
-            DefaultSpy.Agency.AgencyName = txtAgencyName.Text;
-            DefaultSpy.Agency.NumberOfAgents = (int)numAgents.Value;
+            defaultSpy.Agency.Country = txtAgencyCountry.Text;
+            defaultSpy.Agency.AgencyName = txtAgencyName.Text;
+            defaultSpy.Agency.NumberOfAgents = (int)numAgents.Value;
 
             FillListBox();
         }
@@ -43,31 +40,30 @@ namespace SpyAgency
         private void FillListBox()
         {
             lbxSpy.Items.Clear();
-            lbxSpy.Items.Add("Code name: " + DefaultSpy.CodeName);
-            lbxSpy.Items.Add("Agent weapon is a " + DefaultSpy.Weapon);
-            lbxSpy.Items.Add("Agent killability is " + DefaultSpy.KillAbility);
-            lbxSpy.Items.Add("Agent can use a " + DefaultSpy.Gadgets);
-            lbxSpy.Items.Add("Agent charm level is " + DefaultSpy.Charmlevel);
+            lbxSpy.Items.Add("Code name: " + defaultSpy.CodeName);
+            lbxSpy.Items.Add("Weapon is a " + defaultSpy.Weapon);
 
-            lbxSpy.Items.Add("Home: " + DefaultSpy.Home());
-            lbxSpy.Items.Add("Lives in " + DefaultSpy.Agency.Country);
-            lbxSpy.Items.Add("Agency Name: " + DefaultSpy.Agency.AgencyName);
+            lbxSpy.Items.Add("Charm level is " + defaultSpy.Charmlevel);
+
+            lbxSpy.Items.Add("Home: " + defaultSpy.Home());
+            lbxSpy.Items.Add("Lives in " + defaultSpy.Agency.Country);
+            lbxSpy.Items.Add("Agency Name: " + defaultSpy.Agency.AgencyName);
 
 
 
             //work out the age
-            lbxSpy.Items.Add("Spy is " + DefaultSpy.YearsOld(dtpDOB.Value) + " years old");
+            lbxSpy.Items.Add("Spy is " + defaultSpy.YearsOld(dtpDOB.Value) + " years old");
 
             //work out how long since seen
-            lbxSpy.Items.Add(DefaultSpy.DaysSinceLastSeen(dtpLastSeen.Value) + " days last seen");
+            lbxSpy.Items.Add(defaultSpy.DaysSinceLastSeen(dtpLastSeen.Value) + " days last seen");
             //How many agents in the spy group
-            lbxSpy.Items.Add("There are " + DefaultSpy.Agency.NumberOfAgents + " agents");
+            lbxSpy.Items.Add("There are " + defaultSpy.Agency.NumberOfAgents + " agents");
 
 
 
         }
 
-        private void DtpDOB_ValueChanged(object sender, EventArgs e)
+        private void AllDTP_ValueChanged(object sender, EventArgs e)
         {
             LoadSpyData();
         }
@@ -83,19 +79,18 @@ namespace SpyAgency
             //select a level of spy and instantiate it
             var myChosenSpy = Factory.GetASpy(cbspylevel.SelectedIndex);
             //pass across the values to the default spy
-            DefaultSpy = myChosenSpy;
+            defaultSpy = myChosenSpy;
 
             //if there is a new name use that instead of the default name
             if (!string.IsNullOrEmpty(txtCodeName.Text))
             {
-                DefaultSpy.CodeName = txtCodeName.Text;
+                defaultSpy.CodeName = txtCodeName.Text;
             }
 
             //pass the values to the Change Default Features section
-            txtWeapon.Text = DefaultSpy.Weapon;
-            txtKillability.Text = DefaultSpy.KillAbility;
-            txtGadgets.Text = DefaultSpy.Gadgets;
-            numCharmLevel.Value = DefaultSpy.Charmlevel;
+            txtWeapon.Text = defaultSpy.Weapon;
+
+            numCharmLevel.Value = defaultSpy.Charmlevel;
 
             //see it on the listbox with default settings
             FillListBox();
@@ -115,10 +110,9 @@ namespace SpyAgency
 
 
             //print out if there is a codename as it will be used as the filename
-            if (DefaultSpy.CodeName != null)
+            if (defaultSpy.CodeName.Length > 0)
             {
-
-                string filename = DefaultSpy.CodeName;
+                string filename = defaultSpy.CodeName;
                 Data.FileOperations.SaveFile(filename, FileData);
                 MessageBox.Show("File named " + filename + ".txt" + " has been saved");
             }
@@ -164,6 +158,14 @@ namespace SpyAgency
             LoadSpyData();
         }
 
+        private void btnDeleteFile_Click(object sender, EventArgs e)
+        {
+            string filename = lbxFiles.SelectedItem.ToString();
 
+            FileOperations.DeleteFile(filename);
+
+            lbxFiles.Items.Clear();
+            lbxFiles.Items.AddRange(FileOperations.ListAllFiles().ToArray());
+        }
     }
 }

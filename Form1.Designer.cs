@@ -31,22 +31,18 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.numCharmLevel = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.txtCodeName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtWeapon = new System.Windows.Forms.TextBox();
             this.dtpDOB = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpLastSeen = new System.Windows.Forms.DateTimePicker();
             this.cbspylevel = new System.Windows.Forms.ComboBox();
-            this.numCharmLevel = new System.Windows.Forms.NumericUpDown();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtGadgets = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtKillability = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtWeapon = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.btnLoadFiles = new System.Windows.Forms.Button();
             this.btnSaveSpy = new System.Windows.Forms.Button();
             this.lbxSpy = new System.Windows.Forms.ListBox();
@@ -59,17 +55,15 @@
             this.txtAgencyCountry = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.lbxFiles = new System.Windows.Forms.ListBox();
+            this.btnDeleteFile = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numCharmLevel)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAgents)).BeginInit();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -102,10 +96,14 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.numCharmLevel);
             this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.txtCodeName);
             this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.txtWeapon);
             this.panel2.Controls.Add(this.dtpDOB);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label8);
@@ -114,8 +112,16 @@
             this.panel2.Location = new System.Drawing.Point(25, 17);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(205, 214);
+            this.panel2.Size = new System.Drawing.Size(205, 297);
             this.panel2.TabIndex = 30;
+            // 
+            // numCharmLevel
+            // 
+            this.numCharmLevel.Location = new System.Drawing.Point(6, 177);
+            this.numCharmLevel.Name = "numCharmLevel";
+            this.numCharmLevel.Size = new System.Drawing.Size(138, 20);
+            this.numCharmLevel.TabIndex = 17;
+            this.numCharmLevel.ValueChanged += new System.EventHandler(this.Allnum_ValueChanged);
             // 
             // label9
             // 
@@ -127,6 +133,16 @@
             this.label9.Size = new System.Drawing.Size(35, 17);
             this.label9.TabIndex = 8;
             this.label9.Text = "Spy";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 162);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(66, 13);
+            this.label13.TabIndex = 16;
+            this.label13.Text = "Charm Level";
             // 
             // txtCodeName
             // 
@@ -147,29 +163,48 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Spy Code Name";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 113);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(48, 13);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "Weapon";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 126);
+            this.label2.Location = new System.Drawing.Point(1, 203);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Birth Date";
             // 
+            // txtWeapon
+            // 
+            this.txtWeapon.Location = new System.Drawing.Point(6, 128);
+            this.txtWeapon.Margin = new System.Windows.Forms.Padding(2);
+            this.txtWeapon.Name = "txtWeapon";
+            this.txtWeapon.Size = new System.Drawing.Size(159, 20);
+            this.txtWeapon.TabIndex = 9;
+            this.txtWeapon.Leave += new System.EventHandler(this.AlltxtBoxChanges_TextChanged);
+            // 
             // dtpDOB
             // 
-            this.dtpDOB.Location = new System.Drawing.Point(4, 141);
+            this.dtpDOB.Location = new System.Drawing.Point(2, 218);
             this.dtpDOB.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDOB.Name = "dtpDOB";
             this.dtpDOB.Size = new System.Drawing.Size(198, 20);
             this.dtpDOB.TabIndex = 3;
-            this.dtpDOB.ValueChanged += new System.EventHandler(this.DtpDOB_ValueChanged);
+            this.dtpDOB.ValueChanged += new System.EventHandler(this.AllDTP_ValueChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 162);
+            this.label1.Location = new System.Drawing.Point(1, 239);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 13);
@@ -178,11 +213,12 @@
             // 
             // dtpLastSeen
             // 
-            this.dtpLastSeen.Location = new System.Drawing.Point(6, 178);
+            this.dtpLastSeen.Location = new System.Drawing.Point(4, 255);
             this.dtpLastSeen.Margin = new System.Windows.Forms.Padding(2);
             this.dtpLastSeen.Name = "dtpLastSeen";
             this.dtpLastSeen.Size = new System.Drawing.Size(196, 20);
             this.dtpLastSeen.TabIndex = 4;
+            this.dtpLastSeen.ValueChanged += new System.EventHandler(this.AllDTP_ValueChanged);
             // 
             // cbspylevel
             // 
@@ -203,83 +239,9 @@
             this.cbspylevel.TabIndex = 27;
             this.cbspylevel.SelectedIndexChanged += new System.EventHandler(this.Cbspylevel_SelectedIndexChanged);
             // 
-            // numCharmLevel
-            // 
-            this.numCharmLevel.Location = new System.Drawing.Point(5, 84);
-            this.numCharmLevel.Name = "numCharmLevel";
-            this.numCharmLevel.Size = new System.Drawing.Size(138, 20);
-            this.numCharmLevel.TabIndex = 17;
-            this.numCharmLevel.ValueChanged += new System.EventHandler(this.Allnum_ValueChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(2, 69);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(66, 13);
-            this.label13.TabIndex = 16;
-            this.label13.Text = "Charm Level";
-            // 
-            // txtGadgets
-            // 
-            this.txtGadgets.Location = new System.Drawing.Point(235, 61);
-            this.txtGadgets.Margin = new System.Windows.Forms.Padding(2);
-            this.txtGadgets.Name = "txtGadgets";
-            this.txtGadgets.Size = new System.Drawing.Size(139, 20);
-            this.txtGadgets.TabIndex = 13;
-            this.txtGadgets.Leave += new System.EventHandler(this.AlltxtBoxChanges_TextChanged);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(233, 45);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(47, 13);
-            this.label11.TabIndex = 14;
-            this.label11.Text = "Gadgets";
-            // 
-            // txtKillability
-            // 
-            this.txtKillability.Location = new System.Drawing.Point(235, 24);
-            this.txtKillability.Margin = new System.Windows.Forms.Padding(2);
-            this.txtKillability.Name = "txtKillability";
-            this.txtKillability.Size = new System.Drawing.Size(139, 20);
-            this.txtKillability.TabIndex = 11;
-            this.txtKillability.Leave += new System.EventHandler(this.AlltxtBoxChanges_TextChanged);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(232, 9);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(46, 13);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "Killability";
-            // 
-            // txtWeapon
-            // 
-            this.txtWeapon.Location = new System.Drawing.Point(3, 47);
-            this.txtWeapon.Margin = new System.Windows.Forms.Padding(2);
-            this.txtWeapon.Name = "txtWeapon";
-            this.txtWeapon.Size = new System.Drawing.Size(159, 20);
-            this.txtWeapon.TabIndex = 9;
-            this.txtWeapon.Leave += new System.EventHandler(this.AlltxtBoxChanges_TextChanged);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(0, 32);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(48, 13);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "Weapon";
-            // 
             // btnLoadFiles
             // 
+            this.btnLoadFiles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLoadFiles.Location = new System.Drawing.Point(13, 104);
             this.btnLoadFiles.Margin = new System.Windows.Forms.Padding(2);
             this.btnLoadFiles.Name = "btnLoadFiles";
@@ -292,10 +254,10 @@
             // btnSaveSpy
             // 
             this.btnSaveSpy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveSpy.Location = new System.Drawing.Point(244, 195);
+            this.btnSaveSpy.Location = new System.Drawing.Point(280, 190);
             this.btnSaveSpy.Margin = new System.Windows.Forms.Padding(2);
             this.btnSaveSpy.Name = "btnSaveSpy";
-            this.btnSaveSpy.Size = new System.Drawing.Size(180, 26);
+            this.btnSaveSpy.Size = new System.Drawing.Size(98, 75);
             this.btnSaveSpy.TabIndex = 28;
             this.btnSaveSpy.Text = "Save Spy";
             this.btnSaveSpy.UseVisualStyleBackColor = true;
@@ -313,7 +275,6 @@
             this.lbxSpy.Name = "lbxSpy";
             this.lbxSpy.Size = new System.Drawing.Size(228, 178);
             this.lbxSpy.TabIndex = 23;
-          
             // 
             // panel1
             // 
@@ -403,43 +364,14 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.LightGray;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.label14);
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.btnSaveSpy);
             this.panel3.Location = new System.Drawing.Point(53, 229);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(461, 395);
+            this.panel3.Size = new System.Drawing.Size(461, 330);
             this.panel3.TabIndex = 32;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.panel4.Controls.Add(this.numCharmLevel);
-            this.panel4.Controls.Add(this.label15);
-            this.panel4.Controls.Add(this.label12);
-            this.panel4.Controls.Add(this.label13);
-            this.panel4.Controls.Add(this.txtKillability);
-            this.panel4.Controls.Add(this.label10);
-            this.panel4.Controls.Add(this.txtGadgets);
-            this.panel4.Controls.Add(this.txtWeapon);
-            this.panel4.Controls.Add(this.label11);
-            this.panel4.Location = new System.Drawing.Point(25, 236);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(389, 111);
-            this.panel4.TabIndex = 31;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(2, 9);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(189, 17);
-            this.label15.TabIndex = 20;
-            this.label15.Text = "Change Default Features";
             // 
             // label14
             // 
@@ -466,12 +398,25 @@
             this.lbxFiles.TabIndex = 33;
             this.lbxFiles.SelectedIndexChanged += new System.EventHandler(this.lbxFiles_SelectedIndexChanged);
             // 
+            // btnDeleteFile
+            // 
+            this.btnDeleteFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteFile.Location = new System.Drawing.Point(11, 183);
+            this.btnDeleteFile.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeleteFile.Name = "btnDeleteFile";
+            this.btnDeleteFile.Size = new System.Drawing.Size(87, 39);
+            this.btnDeleteFile.TabIndex = 34;
+            this.btnDeleteFile.Text = "Delete Spy File";
+            this.btnDeleteFile.UseVisualStyleBackColor = true;
+            this.btnDeleteFile.Click += new System.EventHandler(this.btnDeleteFile_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(612, 782);
+            this.ClientSize = new System.Drawing.Size(612, 585);
+            this.Controls.Add(this.btnDeleteFile);
             this.Controls.Add(this.lbxFiles);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.pictureBox1);
@@ -489,8 +434,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numAgents)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -520,18 +463,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtWeapon;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtGadgets;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtKillability;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown numCharmLevel;
         private System.Windows.Forms.NumericUpDown numAgents;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ListBox lbxFiles;
+        private System.Windows.Forms.Button btnDeleteFile;
     }
 }
 
